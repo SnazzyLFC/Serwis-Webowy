@@ -9,6 +9,11 @@ namespace ProduktyWebSerwis.Models
 {
     public class Allergen
     {
+        public Allergen()
+        {
+
+        }
+
         [Display(Name="Id allergenu:")]
         public int Id { get; set; }
 

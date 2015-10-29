@@ -9,6 +9,11 @@ namespace ProduktyWebSerwis.Models
 {
     public class Kategoria
     {
+        public Kategoria ()
+        {
+
+        }
+
         [Display(Name="Id kategorii:")]
         public int Id { get; set; }
 

@@ -9,6 +9,10 @@ namespace ProduktyWebSerwis.Models
 {
     public class Produkt
     {
+        public Produkt()
+        {
+            this.Allergeny = new HashSet<Allergen>();
+        }
         [Display(Name="Id produktu")]
         public int Id { get; set; }
 
@@ -18,6 +22,5 @@ namespace ProduktyWebSerwis.Models
         public string Nazwa { get; set; }
 
         public virtual Kategoria Kategoria { get; set; }
-
     }
 }
