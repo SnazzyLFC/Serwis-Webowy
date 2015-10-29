@@ -18,16 +18,18 @@ namespace ProduktyWebSerwis.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ProdContext : IdentityDbContext
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public ProdContext()
+            : base("DefaultConnection")
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static ProdContext Create()
         {
-            return new ApplicationDbContext();
+            return new ProdContext();
         }
+
+
     }
 }

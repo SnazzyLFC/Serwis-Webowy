@@ -13,14 +13,14 @@ namespace ProduktyWebSerwis.Models
         {
             this.Allergeny = new HashSet<Allergen>();
         }
-        [Display(Name="Id produktu")]
+        [Display(Name="Id produktu:")]
         public int Id { get; set; }
 
         public virtual ICollection<Allergen> Allergeny { get; set; }
 
-        [Display(Name ="Nazwa produktu")]
+        [Display(Name ="Nazwa produktu:")]
         public string Nazwa { get; set; }
-
+        
         public virtual Kategoria Kategoria { get; set; }
     }
 }
