@@ -16,11 +16,12 @@ namespace ProduktyWebSerwis.Models
         [Display(Name="Id produktu:")]
         public int Id { get; set; }
 
-        public virtual ICollection<Allergen> Allergeny { get; set; }
+        public virtual ICollection<Allergen> Allergeny { get; private set; }
 
         [Display(Name ="Nazwa produktu:")]
         public string Nazwa { get; set; }
         
-        public virtual Kategoria Kategoria { get; set; }
+        //public string KategoriaId {get; set;}
+        public Kategoria Kategoria { get; set; }
     }
 }

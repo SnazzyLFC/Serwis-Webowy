@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace ProduktyWebSerwis.Models
 {
@@ -30,6 +31,17 @@ namespace ProduktyWebSerwis.Models
             return new ProdContext();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Entity<Produkt>().HasRequired(x=>x.Allergeny).WithMany(x=>x.Produkt)
+        }
+
+        public DbSet<Produkt> Produkty { get; set; }
+        public DbSet<Allergen> Allergeny { get; set; }
+        public DbSet<Kategoria> Kategorie { get; set; }
 
     }
 }

@@ -11,7 +11,7 @@ namespace ProduktyWebSerwis.Models
     {
         public Kategoria ()
         {
-
+            this.Produkty = new HashSet<Produkt>();
         }
 
         [Display(Name="Id kategorii:")]
@@ -19,5 +19,7 @@ namespace ProduktyWebSerwis.Models
 
         [Display(Name ="Nazwa kategorii:")]
         public string Nazwa { get; set; }
+
+        public virtual ICollection<Produkt> Produkty { get; private set; }
     }
 }

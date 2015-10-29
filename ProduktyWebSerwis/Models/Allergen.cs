@@ -11,7 +11,7 @@ namespace ProduktyWebSerwis.Models
     {
         public Allergen()
         {
-
+            this.Produkty = new HashSet<Produkt>();
         }
 
         [Display(Name="Id allergenu:")]
@@ -19,5 +19,8 @@ namespace ProduktyWebSerwis.Models
 
         [Display(Name ="Nazwa allergenu:")]
         public string Nazwa { get; set; }
+
+        public Produkt Produkt { get; set; }
+        public virtual ICollection<Produkt> Produkty { get; private set; }
     }
 }
