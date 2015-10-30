@@ -38,7 +38,6 @@ namespace ProduktyWebSerwis.Models
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             //modelBuilder.Entity<Produkt>().HasRequired(x => x.Allergeny).WithMany(x => x.Produkt).HasForeingKey(x => x.AllergenyId).WillCascadeOnDelete(true);
             modelBuilder.Entity<Produkt>().HasMany(x => x.Allergeny).WithMany(x => x.Produkty);
-            modelBuilder.Entity<Kategoria>().HasMany(x=>x.Produkty)
         }
 
         public DbSet<Produkt> Produkty { get; set; }
