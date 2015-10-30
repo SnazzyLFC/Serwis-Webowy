@@ -20,7 +20,8 @@ namespace ProduktyWebSerwis.Models
         [Display(Name ="Nazwa allergenu:")]
         public string Nazwa { get; set; }
 
-        public Produkt Produkt { get; set; }
+        public string KategoriaId { get; set; }
+        public Kategoria Kategoria { get; set; }
         public virtual ICollection<Produkt> Produkty { get; private set; }
     }
 }
