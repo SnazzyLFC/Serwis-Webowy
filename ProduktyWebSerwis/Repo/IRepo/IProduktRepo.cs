@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProduktyWebSerwis.Repo.IRepo
 {
-    interface IProduktRepo
+    public interface IProduktRepo
     {
         IQueryable<Produkt> PobierzProdukty();
     }

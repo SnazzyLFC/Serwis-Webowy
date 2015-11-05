@@ -23,7 +23,7 @@ namespace ProduktyWebSerwis.Controllers
         // GET: Produkt
         public ActionResult Index()
         {
-            var produkty = repo.PobierzProdukty();
+            var produkty = _repo.PobierzProdukty();
             return View(produkty);
         }
 
