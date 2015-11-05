@@ -10,11 +10,16 @@ namespace ProduktyWebSerwis.Repo
 {
     public class ProduktRepo : IProduktRepo
     {
-        private ProdContext db = new ProdContext();
+        private readonly IProdContext _db;
+        public ProduktRepo(IProdContext db)
+        {
+            _db = db;
+        }
 
         public IQueryable<Produkt> PobierzProdukty()
         {
-            return db.Produkty.AsNoTracking();
+            var produkty = _db.Produkty.AsNoTracking();
+            return produkty;
         }
     }
 }

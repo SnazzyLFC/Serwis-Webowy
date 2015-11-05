@@ -4,6 +4,7 @@ using Microsoft.Practices.Unity.Configuration;
 using ProduktyWebSerwis.Controllers;
 using ProduktyWebSerwis.Repo.IRepo;
 using ProduktyWebSerwis.Repo;
+using ProduktyWebSerwis.Models;
 
 namespace ProduktyWebSerwis.App_Start
 {
@@ -42,8 +43,9 @@ namespace ProduktyWebSerwis.App_Start
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<AccountController>(new InjectionConstructor());
             container.RegisterType<ManageController>(new InjectionConstructor());
-            container.RegisterType<IProduktRepo, ProduktRepo>(new PerRequestLifetimeManager());
 
+            container.RegisterType<IProduktRepo, ProduktRepo>(new PerRequestLifetimeManager());
+            container.RegisterType<IProdContext, ProdContext>(new PerRequestLifetimeManager());
         }
     }
 }

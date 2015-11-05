@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using ProduktyWebSerwis.Repo.IRepo;
 
 namespace ProduktyWebSerwis.Models
 {
@@ -19,7 +20,7 @@ namespace ProduktyWebSerwis.Models
         }
     }
 
-    public class ProdContext : IdentityDbContext
+    public class ProdContext : IdentityDbContext, IProdContext
     {
         public ProdContext()
             : base("DefaultConnection")
