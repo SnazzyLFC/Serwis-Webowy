@@ -1,5 +1,8 @@
 namespace ProduktyWebSerwis.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -27,6 +30,33 @@ namespace ProduktyWebSerwis.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            SeedRoles(context);
+
         }
+
+        private void SeedRoles(ProdContext context)
+        {
+            var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>());
+            if (!roleManager.RoleExists("Admin"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Admin";
+                roleManager.Create(role);
+            }
+        }
+
+        private void SeedUsers(ProdContext context)
+        {
+            var store = new UserStore<ApplicationUser>(context);
+            var manager = new UserManager<ApplicationUser>(store);
+            if (!context.Users.Any(u => u.UserName =="Admin"))
+            {
+                var user = new ApplicationUser { UserName = "Admin" };
+                var adminresult = manager.Create(user, "zaq12wsx");
+                if (adminresult.Succeeded)
+                    manager.AddToRole(user.Id, "Admin");
+            }
+        }
+    
     }
 }
