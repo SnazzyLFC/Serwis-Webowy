@@ -187,6 +187,8 @@
     <Compile Include="Models\Views\ManageViewModels.cs" />
     <Compile Include="Models\Produkt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\IRepo\IProduktRepo.cs" />
+    <Compile Include="Repo\ProduktRepo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

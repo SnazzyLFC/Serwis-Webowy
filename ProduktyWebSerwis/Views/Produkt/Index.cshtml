@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ProduktyWebSerwis.Models.Produkt>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Produkty";
 }
 
-<h2>Index</h2>
+<h2>Lista produktów</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj nowy produkt", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
