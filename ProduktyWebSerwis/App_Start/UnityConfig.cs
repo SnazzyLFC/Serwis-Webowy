@@ -46,6 +46,7 @@ namespace ProduktyWebSerwis.App_Start
 
             container.RegisterType<IProduktRepo, ProduktRepo>(new PerRequestLifetimeManager());
             container.RegisterType<IProdContext, ProdContext>(new PerRequestLifetimeManager());
+            container.RegisterType<IKatRepo, KatRepo>(new PerRequestLifetimeManager());
         }
     }
 }

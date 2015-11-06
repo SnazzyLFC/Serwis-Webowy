@@ -14,43 +14,46 @@ namespace ProduktyWebSerwis.Controllers
 {
     public class ProduktController : Controller
     {
-        public ProduktController(IProduktRepo repo)
+        public ProduktController(IProduktRepo prodRrepo, IKatRepo katRepo)
         {
-            _repo = repo;
+            _prodRepo = prodRrepo;
+            _katRepo = katRepo;
         }
-        private readonly IProduktRepo _repo;       
+        private readonly IProduktRepo _prodRepo;
+        private readonly IKatRepo _katRepo;      
         
         // GET: Produkt
         public ActionResult Index()
         {
-            var produkty = _repo.PobierzProdukty();
+            var produkty = _prodRepo.PobierzProdukty();
             return View(produkty);
         }
 
-        //// GET: Produkt/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Produkt produkt = db.Produkty.Find(id);
-        //    if (produkt == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(produkt);
-        //}
+        // GET: Produkt/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Produkt produkt = _prodRepo.GetProduktById((int)id);
+            if (produkt == null)
+            {
+                return HttpNotFound();
+            }
+            return View(produkt);
+        }
 
-        //// GET: Produkt/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        // GET: Produkt/Create
+        public ActionResult Create()
+        {
+            ViewData["Kategorie"] = _katRepo.PobierzListeKategorii();
+            return View();
+        }
 
-        //// POST: Produkt/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Produkt/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public ActionResult Create([Bind(Include = "Id,Nazwa")] Produkt produkt)

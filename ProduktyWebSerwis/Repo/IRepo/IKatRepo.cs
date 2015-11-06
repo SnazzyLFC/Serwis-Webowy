@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace ProduktyWebSerwis.Repo.IRepo
 {
-    public interface IProduktRepo
+    public interface IKatRepo
     {
-        IQueryable<Produkt> PobierzProdukty();
-        Produkt GetProduktById(int id);
+        IEnumerable<SelectListItem> PobierzListeKategorii();
+        IQueryable<Kategoria> PobierzKategorie();
     }
 }

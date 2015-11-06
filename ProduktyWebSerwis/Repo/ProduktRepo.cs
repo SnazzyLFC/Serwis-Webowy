@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace ProduktyWebSerwis.Repo
 {
@@ -20,6 +21,14 @@ namespace ProduktyWebSerwis.Repo
         {
             var produkty = _db.Produkty.AsNoTracking();
             return produkty;
+        }
+
+
+
+        public Produkt GetProduktById(int id)
+        {
+            Produkt produkt = _db.Produkty.Find(id);
+            return produkt;
         }
     }
 }

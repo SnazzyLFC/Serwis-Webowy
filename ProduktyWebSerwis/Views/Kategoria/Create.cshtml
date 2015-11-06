@@ -1,14 +1,8 @@
-﻿@model ProduktyWebSerwis.Models.Produkt
-@using ProduktyWebSerwis.Models
+﻿@model ProduktyWebSerwis.Models.Kategoria
 
 @{
     ViewBag.Title = "Create";
 }
-
-@*@{
-    var kategorie = (IQueryable<Kategoria>)ViewData["kategorie"];
-}*@
-
 
 <h2>Create</h2>
 
@@ -18,29 +12,15 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Produkt</h4>
+        <h4>Kategoria</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
         <div class="form-group">
-            @Html.LabelFor(model => model.Nazwa, htmlAttributes: new { @class = "control-label col-md-2" })  
-
+            @Html.LabelFor(model => model.Nazwa, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Nazwa, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nazwa, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Kategoria.Nazwa, htmlAttributes: new { @class = "control-label col-md-2" })
-
-            <div class="col-md-10">
-                    @Html.DropDownList("Kategorie");
-                    @Html.ValidationMessageFor(model => model.Kategoria.Nazwa, "", new { @class = "text-danger" })
-
-
-            </div>
-
         </div>
 
         <div class="form-group">
