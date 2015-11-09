@@ -23,7 +23,15 @@ namespace ProduktyWebSerwis.Repo
             return produkty;
         }
 
+        public void Dodaj(Produkt produkt)
+        {
+            _db.Produkty.Add(produkt);
+        }
 
+        public void Zapisz()
+        {
+            _db.SaveChanges();
+        }
 
         public Produkt GetProduktById(int id)
         {

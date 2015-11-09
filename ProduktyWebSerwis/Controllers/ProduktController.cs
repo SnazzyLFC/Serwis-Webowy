@@ -51,22 +51,29 @@ namespace ProduktyWebSerwis.Controllers
             return View();
         }
 
-        // POST: Produkt/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //POST: Produkt/Create
+        //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,Nazwa")] Produkt produkt)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Produkty.Add(produkt);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Nazwa")] Produkt produkt)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _prodRepo.Dodaj(produkt);
+                    _prodRepo.Zapisz();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View(produkt);
+                }
+            }
 
-        //    return View(produkt);
-        //}
+            return View(produkt);
+        }
 
         //// GET: Produkt/Edit/5
         //public ActionResult Edit(int? id)

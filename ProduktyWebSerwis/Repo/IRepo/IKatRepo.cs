@@ -12,5 +12,7 @@ namespace ProduktyWebSerwis.Repo.IRepo
     {
         IEnumerable<SelectListItem> PobierzListeKategorii();
         IQueryable<Kategoria> PobierzKategorie();
+        void Dodaj(Kategoria kategoria);
+        void Zapisz();
     }
 }

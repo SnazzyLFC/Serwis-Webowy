@@ -12,5 +12,7 @@ namespace ProduktyWebSerwis.Repo.IRepo
     {
         IQueryable<Produkt> PobierzProdukty();
         Produkt GetProduktById(int id);
+        void Dodaj(Produkt produkt);
+        void Zapisz();
     }
 }

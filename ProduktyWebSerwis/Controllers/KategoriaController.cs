@@ -13,16 +13,16 @@ namespace ProduktyWebSerwis.Controllers
 {
     public class KategoriaController : Controller
     {
-        public KategoriaController(IKatRepo repo)
+        public KategoriaController(IKatRepo katRepo)
         {
-            _repo = repo;
+            _katRepo = katRepo;
         }
-        private readonly IKatRepo _repo;
+        private readonly IKatRepo _katRepo;
 
         // GET: Kategoria
         public ActionResult Index()
         {
-            var kategorie = _repo.PobierzKategorie();
+            var kategorie = _katRepo.PobierzKategorie();
             return View(kategorie);
         }
 
@@ -41,28 +41,35 @@ namespace ProduktyWebSerwis.Controllers
         //    return View(kategoria);
         //}
 
-        //// GET: Kategoria/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        // GET: Kategoria/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-        //// POST: Kategoria/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,Nazwa")] Kategoria kategoria)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Kategorie.Add(kategoria);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        // POST: Kategoria/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Nazwa")] Kategoria kategoria)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _katRepo.Dodaj(kategoria);
+                    _katRepo.Zapisz();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View(kategoria);
+                }
+            }
 
-        //    return View(kategoria);
-        //}
+            return View(kategoria);
+        }
 
         //// GET: Kategoria/Edit/5
         //public ActionResult Edit(int? id)

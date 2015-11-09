@@ -17,6 +17,11 @@ namespace ProduktyWebSerwis.Repo
             _db = db;
         }
 
+        public void Dodaj(Kategoria kategoria)
+        {
+            _db.Kategorie.Add(kategoria);
+        }
+
         public IQueryable<Kategoria> PobierzKategorie()
         {
             var kategorie = _db.Kategorie.AsNoTracking();
@@ -34,6 +39,11 @@ namespace ProduktyWebSerwis.Repo
                 i++;
             }
             return lista;
+        }
+
+        public void Zapisz()
+        {
+            _db.SaveChanges();
         }
     }
 }
