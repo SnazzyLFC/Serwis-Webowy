@@ -18,18 +18,18 @@ namespace ProduktyWebSerwis.Migrations
 
         protected override void Seed(ProduktyWebSerwis.Models.ProdContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            //This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            //You can use the DbSet<T>.AddOrUpdate() helper extension method
+            ////to avoid creating duplicate seed data.E.g.
+
+            //  context.People.AddOrUpdate(
+            //    p => p.FullName,
+            //    new Person { FullName = "Andrew Peters" },
+            //    new Person { FullName = "Brice Lambson" },
+            //    new Person { FullName = "Rowan Miller" }
+            //  );
+
             SeedRoles(context);
             SeedUsers(context);
 
@@ -50,7 +50,7 @@ namespace ProduktyWebSerwis.Migrations
         {
             var store = new UserStore<ApplicationUser>(context);
             var manager = new UserManager<ApplicationUser>(store);
-            if (!context.Users.Any(u => u.UserName =="Admin"))
+            if (!context.Users.Any(u => u.UserName == "Admin"))
             {
                 var user = new ApplicationUser { UserName = "Admin" };
                 var adminresult = manager.Create(user, "zaq12wsx");
@@ -58,7 +58,7 @@ namespace ProduktyWebSerwis.Migrations
                     manager.AddToRole(user.Id, "Admin");
             }
         }
-    
+
 
 
 

@@ -56,7 +56,7 @@ namespace ProduktyWebSerwis.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nazwa")] Produkt produkt)
+        public ActionResult Create([Bind(Include = "Id,Nazwa,Kategoria")] Produkt produkt)
         {
             if (ModelState.IsValid)
             {

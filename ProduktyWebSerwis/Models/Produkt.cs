@@ -21,8 +21,7 @@ namespace ProduktyWebSerwis.Models
         [Display(Name = "Nazwa produktu:")]
         public string Nazwa { get; set; }
 
-        //public string KategoriaId {get; set;}
         [Display(Name = "Kategoria:")]
-        public Kategoria Kategoria { get; set; }
+        public String Kategoria { get; set; }
     }
 }

@@ -11,15 +11,13 @@ namespace ProduktyWebSerwis.Models
     {
         public Kategoria ()
         {
-            this.Produkty = new HashSet<Produkt>();
+
         }
 
         [Display(Name="Id kategorii:")]
         public int Id { get; set; }
 
         [Display(Name ="Nazwa kategorii:")]
-        public string Nazwa { get; set; }
-
-        public virtual ICollection<Produkt> Produkty { get; private set; }
+        public String Nazwa { get; set; }
     }
 }
